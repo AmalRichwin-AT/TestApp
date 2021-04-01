@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 import {Button} from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 
-const PendingApproval = ({ navigation}) => {
+const PendingApproval = ({navigation, email}) => {
   const onLogoutPress = () => {
     auth()
       .signOut()
@@ -23,6 +23,14 @@ const PendingApproval = ({ navigation}) => {
         <Text style={{color: 'white', fontSize: 32, textAlign: 'center'}}>
           Your Profile is Pending Approval
         </Text>
+        <Button
+          title="Create Profile"
+          onPress={() =>
+            navigation.navigate('ProfileForm', {
+              email: email,
+            })
+          }
+        />
         <Button onPress={() => onLogoutPress()} title="Logout" />
       </View>
     </SafeAreaView>

@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 import {Button} from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 
-const AdminPage = ({ navigation}) => {
+const AdminPage = ({navigation}) => {
   const onLogoutPress = () => {
     auth()
       .signOut()
@@ -29,4 +29,4 @@ const AdminPage = ({ navigation}) => {
   );
 };
 
-export default PendingApproval;
+export default AdminPage;

@@ -7,6 +7,9 @@ import Signup from '../screens/signup-screen/Signup';
 import Homepage from '../screens/Homepage';
 import PendingApproval from '../screens/PendingApproval';
 import AdminPage from '../screens/AdminPage';
+import Congratulations from '../screens/congratulations';
+import FormSubmission from '../screens/FormSubmission';
+import ProfileForm from '../screens/ProfileForm';
 
 const Stack = createStackNavigator();
 
@@ -45,6 +48,27 @@ const MainNavigation = () => {
         <Stack.Screen
           name="AdminPage"
           component={AdminPage}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Congratulations"
+          component={Congratulations}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="FormSubmission"
+          component={FormSubmission}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="ProfileForm"
+          component={ProfileForm}
           options={{
             headerShown: false,
           }}

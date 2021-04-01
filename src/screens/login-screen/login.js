@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Context} from 'react';
 
 import styles from './style';
 import {
@@ -32,18 +32,32 @@ export default class LoginScreen extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(async () => {
         const user = await firestore()
-        .collection('Users')
-        .doc(this.state.email)
-        .get()
+          .collection('Users')
+          .doc(this.state.email)
+          .get();
 
-        console.log(user)
+        console.log(user);
 
-        if(user._data.role === 'Admin') this.props.navigation.navigate('AdminPage')
-
-        else if(user._data.status === 'PENDING') this.props.navigation.navigate('PendingApproval');
-        else this.props.navigation.navigate('Homepage')
+        if (user._data.role === 'Admin')
+          this.props.navigation.navigate('AdminPage');
+        else if (user._data.status === 'APPROVED') {
+          if (user._data.firstTime) {
+            this.props.navigation.navigate('Congratulations');
+          } else {
+            this.props.navigation.navigate('Homepage');
+          }
+        } else if (user._data.status === 'PENDING')
+          this.props.navigation.navigate('PendingApproval', {
+            email: user._data.email,
+          });
+        return user;
       })
-      .then(() => {
+      .then(user => {
+        if (user._data.firstTime) {
+          firestore().collection('Users').doc(this.state.email).update({
+            firstTime: false,
+          });
+        }
         this.setState({
           email: (this.state.email = ''),
           password: (this.state.password = ''),
