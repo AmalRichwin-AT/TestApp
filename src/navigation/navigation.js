@@ -6,6 +6,7 @@ import Login from '../screens/login-screen/login';
 import Signup from '../screens/signup-screen/Signup';
 import Homepage from '../screens/Homepage';
 import PendingApproval from '../screens/PendingApproval';
+import AdminPage from '../screens/AdminPage';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,13 @@ const MainNavigation = () => {
         <Stack.Screen
           name="PendingApproval"
           component={PendingApproval}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="AdminPage"
+          component={AdminPage}
           options={{
             headerShown: false,
           }}

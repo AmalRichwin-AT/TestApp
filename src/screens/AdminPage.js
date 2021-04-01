@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 import {Button} from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 
-const PendingApproval = ({ navigation}) => {
+const AdminPage = ({ navigation}) => {
   const onLogoutPress = () => {
     auth()
       .signOut()
@@ -21,7 +21,7 @@ const PendingApproval = ({ navigation}) => {
       }}>
       <View>
         <Text style={{color: 'white', fontSize: 32, textAlign: 'center'}}>
-          Your Profile is Pending Approval
+          Admin Page
         </Text>
         <Button onPress={() => onLogoutPress()} title="Logout" />
       </View>
