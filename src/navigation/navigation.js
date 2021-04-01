@@ -1,8 +1,11 @@
 import React from 'react';
-import Login from '../screens/login-screen/login';
-import Signup from '../screens/signup-screen/Signup';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+
+import Login from '../screens/login-screen/login';
+import Signup from '../screens/signup-screen/Signup';
+import Homepage from '../screens/Homepage';
+import PendingApproval from '../screens/PendingApproval';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +23,20 @@ const MainNavigation = () => {
         <Stack.Screen
           name="Signup"
           component={Signup}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Homepage"
+          component={Homepage}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="PendingApproval"
+          component={PendingApproval}
           options={{
             headerShown: false,
           }}

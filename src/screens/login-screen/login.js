@@ -13,6 +13,10 @@ import {
 import {Button} from 'react-native-elements';
 
 export default class LoginScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.containerView} behavior="padding">
@@ -33,7 +37,9 @@ export default class LoginScreen extends Component {
               />
               <Button
                 buttonStyle={styles.loginButton}
-                onPress={() => this.onLoginPress()}
+                onPress={() =>
+                  this.props.navigation.navigate('PendingApproval')
+                }
                 title="Login"
               />
             </View>
